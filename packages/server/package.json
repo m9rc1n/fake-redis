@@ -1,0 +1,43 @@
+{
+  "name": "@fake-redis/server",
+  "version": "0.2.0",
+  "description": "RESP TCP server wrapping the fake-redis core — point any client at it",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run --dir test/unit",
+    "test:e2e": "vitest run --dir test/e2e"
+  },
+  "dependencies": {
+    "@fake-redis/core": "workspace:*"
+  },
+  "devDependencies": {
+    "ioredis": "^5.4.1",
+    "redis": "^4.7.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

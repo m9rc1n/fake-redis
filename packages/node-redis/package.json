@@ -1,0 +1,50 @@
+{
+  "name": "@fake-redis/node-redis",
+  "version": "0.2.0",
+  "description": "node-redis compatible in-memory fake for testing",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run --dir test/unit",
+    "test:integration": "vitest run --dir test/integration"
+  },
+  "dependencies": {
+    "@fake-redis/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "redis": ">=4"
+  },
+  "peerDependenciesMeta": {
+    "redis": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "redis": "^4.7.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

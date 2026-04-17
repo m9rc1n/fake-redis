@@ -1,0 +1,16 @@
+name: Bug report
+description: Report a behavior mismatch with real Redis
+labels: [bug]
+body:
+  - type: input
+    attributes: { label: Package, description: "e.g. @fake-redis/ioredis@0.1.0" }
+    validations: { required: true }
+  - type: input
+    attributes: { label: Client, description: "ioredis / node-redis / other + version" }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Minimal reproduction, description: "A short snippet" }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Expected vs actual }
+    validations: { required: true }

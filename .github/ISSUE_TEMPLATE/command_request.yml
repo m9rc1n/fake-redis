@@ -1,0 +1,12 @@
+name: Command request
+description: Request support for a missing Redis command
+labels: [command-request]
+body:
+  - type: input
+    attributes: { label: Command, description: "e.g. XREADGROUP" }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Use case }
+    validations: { required: true }
+  - type: input
+    attributes: { label: Upstream docs link }
