@@ -3,7 +3,10 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "linked": [["@fake-redis/core", "@fake-redis/ioredis", "@fake-redis/node-redis", "@fake-redis/server"]],
+  "linked": [
+    ["@fake-redis/core", "@fake-redis/ioredis", "@fake-redis/node-redis", "@fake-redis/server"],
+    ["@fake-redis/dynamodb-core", "@fake-redis/dynamodb-client"]
+  ],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",

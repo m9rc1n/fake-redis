@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="fake-redis">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0d12"/>
+      <stop offset="1" stop-color="#151b24"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#ff4f4f" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ff4f4f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff6b6b"/>
+      <stop offset="1" stop-color="#c22b2b"/>
+    </linearGradient>
+    <linearGradient id="left" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0403f"/>
+      <stop offset="1" stop-color="#801517"/>
+    </linearGradient>
+    <linearGradient id="right" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a8201f"/>
+      <stop offset="1" stop-color="#4a0a0c"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0 L0 0 0 32" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+    </pattern>
+    <filter id="softglow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bigglow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+
+  <rect width="720" height="220" rx="20" fill="url(#bg)"/>
+  <rect width="720" height="220" rx="20" fill="url(#grid)"/>
+  <circle cx="110" cy="110" r="130" fill="url(#glow)"/>
+
+  <!-- scanline -->
+  <rect x="0" y="0" width="720" height="220" fill="#ffffff" opacity="0.015">
+    <animate attributeName="y" values="-220;220" dur="6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- phantom echo cubes -->
+  <g transform="translate(52 46)" fill="none" stroke="#ff8080" stroke-width="1.6" stroke-dasharray="4 5" stroke-linejoin="round">
+    <g opacity="0.32">
+      <animateTransform attributeName="transform" type="translate" values="8 -4; 14 -2; 8 -4" dur="3.2s" repeatCount="indefinite"/>
+      <path d="M8 44 L68 10 L128 44 L68 78 Z"/>
+      <path d="M8 44 L8 108 L68 142 L68 78 Z"/>
+      <path d="M128 44 L128 108 L68 142 L68 78 Z"/>
+    </g>
+    <g opacity="0.18">
+      <animateTransform attributeName="transform" type="translate" values="-6 4; -12 8; -6 4" dur="3.2s" repeatCount="indefinite"/>
+      <path d="M8 44 L68 10 L128 44 L68 78 Z"/>
+      <path d="M8 44 L8 108 L68 142 L68 78 Z"/>
+      <path d="M128 44 L128 108 L68 142 L68 78 Z"/>
+    </g>
+  </g>
+
+  <!-- main cube (isometric) -->
+  <g transform="translate(52 46)" filter="url(#softglow)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -3; 0 0" dur="3.2s" repeatCount="indefinite"/>
+      <path d="M8 44 L68 10 L128 44 L68 78 Z" fill="url(#face)"/>
+      <path d="M8 44 L8 108 L68 142 L68 78 Z" fill="url(#left)"/>
+      <path d="M128 44 L128 108 L68 142 L68 78 Z" fill="url(#right)"/>
+      <!-- top face highlight -->
+      <path d="M8 44 L68 10 L128 44 L68 78 Z" fill="#ffffff" opacity="0.06"/>
+      <!-- edges -->
+      <path d="M8 44 L68 78 L128 44 M68 78 L68 142" stroke="#1a0000" stroke-opacity="0.35" stroke-width="1.5" fill="none"/>
+      <!-- wink -->
+      <g stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none">
+        <path d="M30 48 L54 36"/>
+        <path d="M82 36 L106 48">
+          <animate attributeName="d" values="M82 36 L106 48; M82 42 L106 42; M82 36 L106 48" dur="4s" repeatCount="indefinite"/>
+        </path>
+      </g>
+      <!-- heartbeat dot -->
+      <circle cx="68" cy="112" r="3.5" fill="#ffffff" opacity="0.9">
+        <animate attributeName="r" values="3;5;3" dur="1.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="1.6s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" fill="#f5f7fa">
+    <text x="222" y="104" font-size="64" font-weight="800" letter-spacing="-2.5" filter="url(#softglow)">fake<tspan fill="#ff4f4f">-</tspan>redis</text>
+    <g transform="translate(224 146)" font-size="16" font-weight="500" fill="#93a0b2" letter-spacing="0.4">
+      <text>
+        <tspan fill="#ff4f4f">$</tspan>
+        <tspan dx="8">npm i -D @fake-redis/ioredis</tspan>
+      </text>
+      <rect x="262" y="-14" width="10" height="18" fill="#ff4f4f" opacity="0.9">
+        <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.5;0.5;1" dur="1s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <text x="224" y="178" font-size="13" font-weight="500" fill="#5e6b7c" letter-spacing="1.2">IN-MEMORY · DROP-IN · NO DOCKER · NO PROCESS</text>
+  </g>
+</svg>
