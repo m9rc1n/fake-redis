@@ -44,7 +44,7 @@
   "devDependencies": {
     "redis": "^4.7.0",
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
+    "typescript": "^6.0.3",
     "vitest": "^2.1.8"
   }
 }
